@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:attendance_app/screens/attendance.dart';
 
 class MenuScreen extends StatelessWidget {
   @override
@@ -23,7 +24,10 @@ class MenuScreen extends StatelessWidget {
               title: Text('Attendance'),
               onTap: () {
                 // Navigate to Attendance Screen
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AttendanceScreen()),
+                );
               },
             ),
             ListTile(
