@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart'; // Add Get package for navigation
 import 'package:attendance_app/services/auth_services.dart';
-import 'package:attendance_app/screens/menu_screen.dart';
+
+import 'new_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:attendance_app/utils/constants.dart'; // Import the constant file
 
