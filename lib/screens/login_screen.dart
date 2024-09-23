@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:attendance_app/services/auth_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:attendance_app/screens/registration_screen.dart';
-import 'menu_screen.dart';
+import 'new_menu.dart';
 import 'package:attendance_app/utils/constants.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,8 +17,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   void _login() async {
-    User? user = await _authService.signIn(
-        _emailController.text, _passwordController.text);
+    // User? user = await _authService.signIn(
+    //     _emailController.text, _passwordController.text);
+    bool user = true;
     if (user != null) {
       Get.offAll(MenuScreen());
     } else {

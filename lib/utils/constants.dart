@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../models/person.dart';
 
 class AppColors {
   static const Color background = Color(0xFF161926);
@@ -8,3 +10,40 @@ class AppColors {
   static const Color hintTextColor = Colors.black54;
   static const Color errorColor = Colors.redAccent;
 }
+
+// Constants for persons and their locations
+final List<Person> persons = [
+  Person(
+    name: 'Elon Musk',
+    imagePath: 'assets/icons/elon.webp',
+    locations: [
+      LatLng(29.3807301, 79.5234928),
+      // Add more LatLng points as needed
+    ],
+  ),
+  Person(
+    name: 'Mark Jukar Barg',
+    imagePath: 'assets/icons/mark.jpeg',
+    locations: [
+      LatLng(29.3744600, 79.5306311),
+      // Add more LatLng points as needed
+    ],
+  ),
+  Person(
+    name: 'Warren Buffet',
+    imagePath: 'assets/icons/warren.webp',
+    locations: [
+      LatLng(29.3776651, 79.5283670),
+      // Add more LatLng points as needed
+    ],
+  ),
+  Person(
+    name: 'Ratan Naval Tata',
+    imagePath: 'assets/icons/ratan.webp',
+    locations: [
+      LatLng(29.373965, 79.525962),
+      // Add more LatLng points as needed
+    ],
+  ),
+  // Add more Person instances as needed
+];

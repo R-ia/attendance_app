@@ -1,46 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../models/person.dart'; // Ensure this is correctly imported
+import '../utils/constants.dart'; // Ensure this is correctly imported
 
 // Attendance screen to display a list of members
 class AttendanceScreen extends StatelessWidget {
-  final List<Member> members = [
-    Member(
-        name: 'Elon Musk',
-        id: 'WSL0003',
-        profileImage: 'assets/icons/elon.webp',
-        loginTime: '09:30 am',
-        logoutTime: '',
-        status: 'Working'),
-    Member(
-        name: 'Mark Jukarbarg',
-        id: 'WSL0034',
-        profileImage: 'assets/icons/mark.jpeg',
-        loginTime: '09:30 am',
-        logoutTime: '06:40 pm',
-        status: 'Logged out'),
-    Member(
-        name: 'Warren Buffett',
-        id: 'WSL0035',
-        profileImage: 'assets/icons/warren.webp',
-        loginTime: '09:30 am',
-        logoutTime: '06:40 pm',
-        status: 'Logged out'),
-    Member(
-        name: 'Ratan Naval Tata',
-        id: 'WSL0036',
-        profileImage: 'assets/icons/ratan.webp',
-        loginTime: '09:30 am',
-        logoutTime: '06:40 pm',
-        status: 'Logged out'),
-    Member(
-        name: 'Esther Howard',
-        id: 'WSL0037',
-        profileImage: 'assets/icons/profile1.avif',
-        loginTime: '09:30 am',
-        logoutTime: '',
-        status: 'Working'),
-    // Add more members here...
-  ];
+  final List<Member> members = persons.map((person) {
+    // Mapping Person data to Member instances
+    return Member(
+      name: person.name,
+      id: person.name.replaceAll(" ", "").toUpperCase(), // Generate ID from name
+      profileImage: person.imagePath,
+      loginTime: '09:30 am', // Default login time
+      logoutTime: '', // Default logout time (not logged out)
+      status: 'Working', // Default status
+    );
+  }).toList();
 
   @override
   Widget build(BuildContext context) {
@@ -89,29 +65,29 @@ class MemberTile extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (member.status == 'Working')
-      Transform.scale(
-        scale: 0.8, // Adjust the scale factor as necessary
-        child: Chip(
-          label: Text(member.status),
-          backgroundColor: Colors.green,
-        ),
-      ),
+            Transform.scale(
+              scale: 0.8, // Adjust the scale factor as necessary
+              child: Chip(
+                label: Text(member.status),
+                backgroundColor: Colors.green,
+              ),
+            ),
           IconButton(
             icon: SvgPicture.asset(
-        'assets/icons/history.svg', // Use your custom history icon here
-        width: 24, // Adjust size as necessary
-        height: 24,
-      ),
+              'assets/icons/history.svg', // Use your custom history icon here
+              width: 24, // Adjust size as necessary
+              height: 24,
+            ),
             onPressed: () {
               // Add location viewing functionality
             },
           ),
           IconButton(
             icon: SvgPicture.asset(
-        'assets/icons/location.svg', 
-        width: 24, 
-        height: 24,
-      ),
+              'assets/icons/location.svg',
+              width: 24,
+              height: 24,
+            ),
             onPressed: () {
               // Add location viewing functionality
             },
