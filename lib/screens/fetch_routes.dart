@@ -4,16 +4,15 @@ import 'dart:convert';
 
 class RouteDetails {
   final List<LatLng> points;
-  final String distance;
-  final String duration;
+  final String distance; // In kilometers
+  final String duration; // In a readable format
 
   RouteDetails(
       {required this.points, required this.distance, required this.duration});
 }
 
 Future<RouteDetails> fetchRoute(LatLng start, LatLng end) async {
-  final String apiKey =
-      'AIzaSyA7VRrJc0nxBoH2WhemLcwhEqQnUCPfcTA'; // Replace with your actual API key
+  final String apiKey = 'AIzaSyA7VRrJc0nxBoH2WhemLcwhEqQnUCPfcTA';
   final String url =
       'https://maps.googleapis.com/maps/api/directions/json?origin=${start.latitude},${start.longitude}&destination=${end.latitude},${end.longitude}&key=$apiKey';
 
@@ -23,17 +22,29 @@ Future<RouteDetails> fetchRoute(LatLng start, LatLng end) async {
     final data = json.decode(response.body);
     if (data['routes'].isNotEmpty) {
       final List<LatLng> points = [];
-      for (var step in data['routes'][0]['legs'][0]['steps']) {
+      final leg = data['routes'][0]['legs'][0];
+
+      String distanceText = leg['distance']['text'];
+      String duration = leg['duration']['text'];
+
+      double distanceInKm;
+      if (distanceText.contains("mi")) {
+        final distanceInMiles = double.parse(distanceText.split(" ")[0]);
+        distanceInKm = distanceInMiles * 1.60934; // Convert miles to kilometers
+      } else {
+        distanceInKm = double.parse(distanceText.split(" ")[0]);
+      }
+
+      final formattedDistance =
+          "${distanceInKm.toStringAsFixed(1)} km"; // Format to 1 decimal place
+
+      for (var step in leg['steps']) {
         final latLng = step['end_location'];
         points.add(LatLng(latLng['lat'], latLng['lng']));
       }
 
-      // Get distance and duration
-      String distance = data['routes'][0]['legs'][0]['distance']['text'];
-      String duration = data['routes'][0]['legs'][0]['duration']['text'];
-
       return RouteDetails(
-          points: points, distance: distance, duration: duration);
+          points: points, distance: formattedDistance, duration: duration);
     }
   }
   throw Exception('Failed to load route');

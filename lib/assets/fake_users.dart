@@ -9,6 +9,7 @@ class MockData {
           "latitude": 34.0522, // Los Angeles, CA
           "longitude": -118.2437
         },
+        "currentLocationName": "Los Angeles, CA", // Added current location name
         "visitedLocations": [
           {
             "location": "Los Angeles, CA",
@@ -45,6 +46,7 @@ class MockData {
           "latitude": 34.1400, // Farther north
           "longitude": -118.2500
         },
+        "currentLocationName": "Los Angeles, CA", // Added current location name
         "visitedLocations": [
           {
             "location": "Los Angeles, CA",
@@ -81,6 +83,7 @@ class MockData {
           "latitude": 34.1000, // Farther east
           "longitude": -118.4000
         },
+        "currentLocationName": "Hollywood, CA", // Added current location name
         "visitedLocations": [
           {
             "location": "Hollywood, CA",
@@ -117,6 +120,7 @@ class MockData {
           "latitude": 34.2300, // Farther northeast
           "longitude": -118.5000
         },
+        "currentLocationName": "Glendale, CA", // Added current location name
         "visitedLocations": [
           {
             "location": "Glendale, CA",
@@ -153,6 +157,7 @@ class MockData {
           "latitude": 34.0500, // Different area
           "longitude": -118.7000
         },
+        "currentLocationName": "Downtown LA, CA", // Added current location name
         "visitedLocations": [
           {
             "location": "Downtown LA, CA",
@@ -189,6 +194,7 @@ class MockData {
           "latitude": 34.0505, // Farther south
           "longitude": -118.2505
         },
+        "currentLocationName": "Downtown LA, CA", // Added current location name
         "visitedLocations": [
           {
             "location": "Echo Park, CA",
@@ -198,21 +204,21 @@ class MockData {
           },
           {
             "location": "Little Tokyo, CA",
-            "coordinates": {"latitude": 34.0472, "longitude": -118.2398},
+            "coordinates": {"latitude": 34.0453, "longitude": -118.2400},
             "timestamp": "2024-09-25T09:30:00Z",
             "stopDuration": 30
           },
           {
-            "location": "Silver Lake, CA",
-            "coordinates": {"latitude": 34.0860, "longitude": -118.2702},
-            "timestamp": "2024-09-25T12:00:00Z",
-            "stopDuration": 40
+            "location": "Chinatown, CA",
+            "coordinates": {"latitude": 34.0630, "longitude": -118.2395},
+            "timestamp": "2024-09-25T11:00:00Z",
+            "stopDuration": 25
           },
           {
-            "location": "Downtown LA, CA",
-            "coordinates": {"latitude": 34.0407, "longitude": -118.2468},
-            "timestamp": "2024-09-25T14:30:00Z",
-            "stopDuration": 35
+            "location": "LACMA, CA",
+            "coordinates": {"latitude": 34.0622, "longitude": -118.3596},
+            "timestamp": "2024-09-25T13:30:00Z",
+            "stopDuration": 40
           }
         ],
         "avatar": "https://randomuser.me/api/portraits/women/3.jpg"

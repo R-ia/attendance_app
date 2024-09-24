@@ -16,7 +16,7 @@ class MenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     User? currentUser = _authService.getCurrentUser();
-    final members = MockData.getFakeMembers(); // Access mock data directly
+    final members = MockData.getFakeMembers();
 
     return Scaffold(
       appBar: AppBar(
@@ -60,7 +60,6 @@ class MenuScreen extends StatelessWidget {
               title: const Text('Attendance',
                   style: TextStyle(color: AppColors.textColor)),
               onTap: () {
-                // Navigate to Attendance Screen
                 Navigator.pop(context);
               },
             ),
@@ -92,8 +91,6 @@ class MenuScreen extends StatelessWidget {
                   avatarUrl: member['avatar'],
                   onCalendarTap: () {
                     Get.to(() => RouteScreen(memberId: member['id']));
-
-                    // Handle calendar icon tap
                   },
                   onLocationTap: () {
                     Get.to(() => LiveLocationScreen(memberId: member['id']));
@@ -124,7 +121,7 @@ class MenuScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 20), // Add some space below the button
+          const SizedBox(height: 20),
         ],
       ),
     );

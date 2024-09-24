@@ -37,12 +37,10 @@ class _RouteScreenState extends State<RouteScreen> {
   }
 
   void _showRoute(LatLng start, LatLng end) async {
-    // Clear previous markers and distance/duration
     setState(() {
       memberMarkers.clear();
     });
 
-    // Fetch the route points and details
     try {
       RouteDetails routeDetails = await fetchRoute(start, end);
 

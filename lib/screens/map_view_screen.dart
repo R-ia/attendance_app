@@ -57,7 +57,7 @@ class _MapViewScreenState extends State<MapViewScreen> {
                 mapController = controller;
               },
               initialCameraPosition: CameraPosition(
-                target: LatLng(34.0522, -118.2437), // Center on Los Angeles
+                target: LatLng(34.0522, -118.2437),
                 zoom: 10,
               ),
               markers: _markers,
@@ -66,7 +66,6 @@ class _MapViewScreenState extends State<MapViewScreen> {
           Center(
             child: ElevatedButton(
               onPressed: () {
-                // Navigate to the MenuScreen using GetX
                 Get.to(() => MenuScreen());
               },
               child: const Text(

@@ -22,15 +22,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         _emailController.text, _passwordController.text);
 
     if (user != null) {
-      // Update the user's profile with the display name
       await user.updateProfile(displayName: _nameController.text);
-      await user.reload(); // Reload the user to get the updated data
-      user = FirebaseAuth.instance.currentUser; // Get the updated user
+      await user.reload();
+      user = FirebaseAuth.instance.currentUser;
 
-      // Navigate to menu screen after successful registration
       Get.offAll(MenuScreen());
     } else {
-      // Show error message
       Get.snackbar(
         "Registration Failed",
         "Please try again",
@@ -144,7 +141,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Get.back(); // Navigate back to the login screen
+                        Get.back();
                       },
                       child: Text(
                         'Already have an account? Login here!',

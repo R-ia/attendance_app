@@ -6,8 +6,7 @@ import 'package:attendance_app/assets/fake_users.dart';
 class LiveLocationScreen extends StatefulWidget {
   final int memberId;
 
-  LiveLocationScreen(
-      {required this.memberId}); // Accept memberId in the constructor
+  LiveLocationScreen({required this.memberId});
 
   @override
   _LiveLocationScreen createState() => _LiveLocationScreen();
@@ -28,13 +27,10 @@ class _LiveLocationScreen extends State<LiveLocationScreen> {
     // Find the member by ID
     final member = members.firstWhere((m) => m['id'] == widget.memberId);
 
-    // Extract current location and location name
     final currentLatitude = member['currentLocation']['latitude'];
     final currentLongitude = member['currentLocation']['longitude'];
-    final currentLocationName =
-        member['currentLocationName']; // Use the current location name directly
+    final currentLocationName = member['currentLocationName'];
 
-    // Create markers for the member's current location
     Set<Marker> memberMarkers = {
       Marker(
         markerId: MarkerId(member['id'].toString()),
@@ -64,7 +60,7 @@ class _LiveLocationScreen extends State<LiveLocationScreen> {
                 currentLatitude,
                 currentLongitude,
               ),
-              zoom: 16.0, // Adjust zoom level as needed
+              zoom: 16.0,
             ),
             markers: memberMarkers,
             zoomControlsEnabled: true,
@@ -88,8 +84,7 @@ class _LiveLocationScreen extends State<LiveLocationScreen> {
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize:
-                    MainAxisSize.min, // Keeps the sheet size appropriate
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   // Member Name
                   Text(
@@ -148,7 +143,7 @@ class _LiveLocationScreen extends State<LiveLocationScreen> {
                             color: Colors.black87,
                           ),
                           overflow: TextOverflow.ellipsis, // Handle long names
-                          maxLines: 1, // Ensure the text stays on one line
+                          maxLines: 1,
                         ),
                       ),
                     ],
