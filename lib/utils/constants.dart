@@ -18,8 +18,13 @@ final List<Person> persons = [
     imagePath: 'assets/icons/elon.webp',
     locations: [
       LatLng(29.3807301, 79.5234928),
+      LatLng(29.3707301, 79.5434928),
+      LatLng(29.3807301, 79.5234928),
       // Add more LatLng points as needed
     ],
+    status:"working",
+    loginTime:"9:15",
+    logoutTime:"",
   ),
   Person(
     name: 'Mark Jukar Barg',
@@ -28,6 +33,9 @@ final List<Person> persons = [
       LatLng(29.3744600, 79.5306311),
       // Add more LatLng points as needed
     ],
+    status:"working",
+    loginTime:"9:15",
+    logoutTime:"",
   ),
   Person(
     name: 'Warren Buffet',
@@ -36,6 +44,9 @@ final List<Person> persons = [
       LatLng(29.3776651, 79.5283670),
       // Add more LatLng points as needed
     ],
+    status:"",
+    loginTime:"11:15",
+    logoutTime:"4:50",
   ),
   Person(
     name: 'Ratan Naval Tata',
@@ -44,6 +55,9 @@ final List<Person> persons = [
       LatLng(29.373965, 79.525962),
       // Add more LatLng points as needed
     ],
+    status:"",
+    loginTime:"9:15",
+    logoutTime:"5:15",
   ),
   // Add more Person instances as needed
 ];

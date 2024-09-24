@@ -17,9 +17,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   void _login() async {
-    User? user = await _authService.signIn(
-        _emailController.text, _passwordController.text);
-    // bool user = true;
+    // User? user = await _authService.signIn(
+    //     _emailController.text, _passwordController.text);
+    bool user = true;
     if (user != null) {
       Get.offAll(MenuScreen());
     } else {
