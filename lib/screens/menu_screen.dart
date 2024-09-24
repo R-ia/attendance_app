@@ -1,5 +1,7 @@
 import 'package:attendance_app/assets/fake_users.dart';
-import 'package:attendance_app/screens/map.dart';
+import 'package:attendance_app/screens/live_location_screen.dart';
+import 'package:attendance_app/screens/map_view_screen.dart';
+import 'package:attendance_app/screens/routes_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:attendance_app/services/auth_services.dart';
@@ -18,7 +20,7 @@ class MenuScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'ATTENDANCE',
           style: TextStyle(color: Colors.white),
         ),
@@ -30,32 +32,32 @@ class MenuScreen extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
+              decoration: const BoxDecoration(
+                color: AppColors.background,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(
-                    Icons.person, // Replace with your desired icon
+                  const Icon(
+                    Icons.person,
                     size: 40,
                     color: Colors.white,
                   ),
-                  SizedBox(height: 8), // Space between icon and text
+                  const SizedBox(height: 8),
                   Text(
                     currentUser?.displayName ?? "User",
                     style: TextStyle(color: Colors.white, fontSize: 24),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     currentUser?.email ?? "",
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ],
               ),
-              decoration: BoxDecoration(
-                color: AppColors.background,
-              ),
             ),
             ListTile(
-              title: Text('Attendance',
+              title: const Text('Attendance',
                   style: TextStyle(color: AppColors.textColor)),
               onTap: () {
                 // Navigate to Attendance Screen
@@ -63,11 +65,11 @@ class MenuScreen extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.logout,
                 color: AppColors.errorColor,
               ),
-              title: Text('Sign Out',
+              title: const Text('Sign Out',
                   style: TextStyle(color: AppColors.textColor)),
               onTap: () async {
                 await _authService.signOut();
@@ -77,25 +79,53 @@ class MenuScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: ListView.builder(
-        itemCount: members.length,
-        itemBuilder: (context, index) {
-          final member = members[index];
-          return CustomizedTile(
-            name: member['name'],
-            email: member['email'],
-            onCalendarTap: () {
-              // Handle calendar icon tap
-            },
-            onLocationTap: () {
-              // Pass the member ID to MapScreen
-              Get.to(() => MapScreen(memberId: member['id']));
-            },
-            onTap: () {
-              // Handle member tap
-            },
-          );
-        },
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: members.length,
+              itemBuilder: (context, index) {
+                final member = members[index];
+                return CustomizedTile(
+                  name: member['name'],
+                  email: member['email'],
+                  avatarUrl: member['avatar'],
+                  onCalendarTap: () {
+                    Get.to(() => RouteScreen(memberId: member['id']));
+
+                    // Handle calendar icon tap
+                  },
+                  onLocationTap: () {
+                    Get.to(() => LiveLocationScreen(memberId: member['id']));
+                  },
+                  onTap: () {
+                    // Handle member tap
+                  },
+                );
+              },
+            ),
+          ),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                // Navigate to the map view
+                Get.to(
+                    () => MapViewScreen()); // Replace with your MapViewScreen
+              },
+              child: const Text(
+                'Open Map View',
+                style: TextStyle(color: AppColors.purple),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                textStyle: const TextStyle(fontSize: 18),
+              ),
+            ),
+          ),
+          const SizedBox(height: 20), // Add some space below the button
+        ],
       ),
     );
   }

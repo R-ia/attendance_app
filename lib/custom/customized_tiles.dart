@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class CustomizedTile extends StatelessWidget {
   final String name;
   final String email;
+  final String avatarUrl; // New parameter for the avatar URL
   final VoidCallback onCalendarTap;
   final VoidCallback onLocationTap;
   final VoidCallback onTap;
@@ -12,6 +13,7 @@ class CustomizedTile extends StatelessWidget {
   CustomizedTile({
     required this.name,
     required this.email,
+    required this.avatarUrl, // Initialize avatar URL
     required this.onCalendarTap,
     required this.onLocationTap,
     required this.onTap,
@@ -37,12 +39,10 @@ class CustomizedTile extends StatelessWidget {
         child: ListTile(
           leading: CircleAvatar(
             radius: 20, // Size of the avatar
-            backgroundColor: Colors.grey[200], // Background color of the avatar
-            child: Icon(
-              Icons.person, // The person icon
-              size: 24, // Icon size
-              color: Colors.grey, // Icon color
-            ),
+            backgroundImage:
+                NetworkImage(avatarUrl), // Load the avatar image from the URL
+            backgroundColor:
+                Colors.grey[200], // Background color of the avatar (fallback)
           ),
           title: Text(name),
           subtitle: Text(email),
