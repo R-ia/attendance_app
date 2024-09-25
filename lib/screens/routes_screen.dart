@@ -8,7 +8,7 @@ import 'dart:math' as math;
 class RouteScreen extends StatefulWidget {
   final int memberId;
 
-  RouteScreen({required this.memberId});
+  const RouteScreen({super.key, required this.memberId});
 
   @override
   _RouteScreenState createState() => _RouteScreenState();
@@ -23,6 +23,7 @@ class _RouteScreenState extends State<RouteScreen> {
   String distance = '';
   String duration = '';
 
+  @override
   void initState() {
     super.initState();
     // Set default values for distance and duration
@@ -68,7 +69,8 @@ class _RouteScreenState extends State<RouteScreen> {
           Marker(
             markerId: MarkerId('start_${start.latitude}_${start.longitude}'),
             position: start,
-            infoWindow: InfoWindow(title: 'Start', snippet: 'Starting point'),
+            infoWindow:
+                const InfoWindow(title: 'Start', snippet: 'Starting point'),
             icon:
                 BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
           ),
@@ -78,7 +80,7 @@ class _RouteScreenState extends State<RouteScreen> {
           Marker(
             markerId: MarkerId('end_${end.latitude}_${end.longitude}'),
             position: end,
-            infoWindow: InfoWindow(title: 'End', snippet: 'Ending point'),
+            infoWindow: const InfoWindow(title: 'End', snippet: 'Ending point'),
             icon:
                 BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
           ),
@@ -117,7 +119,7 @@ class _RouteScreenState extends State<RouteScreen> {
       maxChildSize: 0.5,
       builder: (context, scrollController) {
         return Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
             boxShadow: [
@@ -134,7 +136,7 @@ class _RouteScreenState extends State<RouteScreen> {
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
                   member['name'],
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
@@ -152,17 +154,18 @@ class _RouteScreenState extends State<RouteScreen> {
                             : null;
 
                     return ListTile(
-                      leading: Icon(Icons.location_on, color: AppColors.purple),
+                      leading: const Icon(Icons.location_on,
+                          color: AppColors.purple),
                       title: Text(
                         location['location'],
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text(
                         'Visited on: ${location['timestamp']} \nStop Duration: ${location['stopDuration']} mins',
                       ),
                       trailing: nextLocation != null
                           ? IconButton(
-                              icon: Icon(Icons.arrow_forward),
+                              icon: const Icon(Icons.arrow_forward),
                               onPressed: () {
                                 LatLng start = LatLng(
                                   location['coordinates']['latitude'],
@@ -210,7 +213,7 @@ class _RouteScreenState extends State<RouteScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           'Visited Routes',
           style: TextStyle(color: Colors.white),
@@ -239,13 +242,13 @@ class _RouteScreenState extends State<RouteScreen> {
             right: 0,
             child: Container(
               color: Colors.white.withOpacity(0.8),
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
                   Text('Distance: $distance',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
                   Text('Duration: $duration',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
             ),

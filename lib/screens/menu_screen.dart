@@ -13,6 +13,8 @@ import 'package:attendance_app/custom/customized_tiles.dart';
 class MenuScreen extends StatelessWidget {
   final AuthService _authService = AuthService();
 
+  MenuScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     User? currentUser = _authService.getCurrentUser();
@@ -25,7 +27,7 @@ class MenuScreen extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: AppColors.background,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       drawer: Drawer(
         child: ListView(
@@ -46,12 +48,12 @@ class MenuScreen extends StatelessWidget {
                   const SizedBox(height: 8),
                   Text(
                     currentUser?.displayName ?? "User",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    style: const TextStyle(color: Colors.white, fontSize: 24),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     currentUser?.email ?? "",
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                    style: const TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ],
               ),
@@ -109,15 +111,15 @@ class MenuScreen extends StatelessWidget {
                 Get.to(
                     () => MapViewScreen()); // Replace with your MapViewScreen
               },
-              child: const Text(
-                'Open Map View',
-                style: TextStyle(color: AppColors.purple),
-              ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 textStyle: const TextStyle(fontSize: 18),
+              ),
+              child: const Text(
+                'Open Map View',
+                style: TextStyle(color: AppColors.purple),
               ),
             ),
           ),

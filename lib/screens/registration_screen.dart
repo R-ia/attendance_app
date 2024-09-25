@@ -6,6 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:attendance_app/utils/constants.dart'; // Import the constant file
 
 class RegistrationScreen extends StatefulWidget {
+  const RegistrationScreen({super.key});
+
   @override
   _RegistrationScreenState createState() => _RegistrationScreenState();
 }
@@ -34,7 +36,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: AppColors.errorColor,
         colorText: Colors.white,
-        duration: Duration(seconds: 3),
+        duration: const Duration(seconds: 3),
       );
       print("Registration failed");
     }
@@ -50,7 +52,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
+              const Text(
                 'Register Supervisor',
                 style: TextStyle(
                   color: Colors.white,
@@ -58,17 +60,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 decoration: BoxDecoration(
                   color: AppColors.containerBackground,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                padding: EdgeInsets.all(24),
+                padding: const EdgeInsets.all(24),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
+                    const Text(
                       'Create an Account',
                       style: TextStyle(
                         color: AppColors.textColor,
@@ -76,74 +78,74 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     // Name Field
                     TextField(
                       controller: _nameController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Name',
                         hintText: 'Enter your name',
                         hintStyle: TextStyle(color: AppColors.hintTextColor),
                         labelStyle: TextStyle(color: AppColors.textColor),
                       ),
-                      style: TextStyle(color: AppColors.textColor),
+                      style: const TextStyle(color: AppColors.textColor),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     // Organization Field
                     TextField(
                       controller: _organizationController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Organization Name',
                         hintText: 'Enter your organization name',
                         hintStyle: TextStyle(color: AppColors.hintTextColor),
                         labelStyle: TextStyle(color: AppColors.textColor),
                       ),
-                      style: TextStyle(color: AppColors.textColor),
+                      style: const TextStyle(color: AppColors.textColor),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     // Email Field
                     TextField(
                       controller: _emailController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Email',
                         hintText: 'Enter your email',
                         hintStyle: TextStyle(color: AppColors.hintTextColor),
                         labelStyle: TextStyle(color: AppColors.textColor),
                       ),
-                      style: TextStyle(color: AppColors.textColor),
+                      style: const TextStyle(color: AppColors.textColor),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     // Password Field
                     TextField(
                       controller: _passwordController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Password',
                         hintText: 'Enter your password',
                         hintStyle: TextStyle(color: AppColors.hintTextColor),
                         labelStyle: TextStyle(color: AppColors.textColor),
                       ),
                       obscureText: true,
-                      style: TextStyle(color: AppColors.textColor),
+                      style: const TextStyle(color: AppColors.textColor),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: _register,
-                      child: Text('Register',
-                          style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.purple,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 40, vertical: 15),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
+                      child: Text('Register',
+                          style: TextStyle(color: Colors.white)),
                     ),
                     TextButton(
                       onPressed: () {
                         Get.back();
                       },
-                      child: Text(
+                      child: const Text(
                         'Already have an account? Login here!',
                         style: TextStyle(color: AppColors.textColor),
                       ),

@@ -7,6 +7,8 @@ import 'menu_screen.dart';
 import 'package:attendance_app/utils/constants.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -15,10 +17,17 @@ class _LoginScreenState extends State<LoginScreen> {
   final AuthService _authService = AuthService();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool _isLoading = false;
 
   void _login() async {
+    setState(() {
+      _isLoading = true;
+    });
     User? user = await _authService.signIn(
         _emailController.text, _passwordController.text);
+    setState(() {
+      _isLoading = false;
+    });
     if (user != null) {
       Get.offAll(MenuScreen());
     } else {
@@ -28,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: AppColors.errorColor,
         colorText: Colors.white,
-        duration: Duration(seconds: 3),
+        duration: const Duration(seconds: 3),
       );
       print("Login failed");
     }
@@ -44,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
+              const Text(
                 'Login Superviser',
                 style: TextStyle(
                   color: Colors.white,
@@ -52,17 +61,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 decoration: BoxDecoration(
                   color: AppColors.containerBackground,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                padding: EdgeInsets.all(24),
+                padding: const EdgeInsets.all(24),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
+                    const Text(
                       'Welcome Back!',
                       style: TextStyle(
                         color: AppColors.textColor,
@@ -70,48 +79,58 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     TextField(
                       controller: _emailController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Email',
                         hintText: 'Enter your email',
                         hintStyle: TextStyle(color: AppColors.hintTextColor),
                         labelStyle: TextStyle(color: AppColors.textColor),
                       ),
-                      style: TextStyle(color: AppColors.textColor),
+                      style: const TextStyle(color: AppColors.textColor),
+                      keyboardType: TextInputType.emailAddress,
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     TextField(
                       controller: _passwordController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Password',
                         hintText: 'Enter your password',
                         hintStyle: TextStyle(color: AppColors.hintTextColor),
                         labelStyle: TextStyle(color: AppColors.textColor),
                       ),
                       obscureText: true,
-                      style: TextStyle(color: AppColors.textColor),
+                      style: const TextStyle(color: AppColors.textColor),
                     ),
-                    SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: _login,
-                      child:
-                          Text('Login', style: TextStyle(color: Colors.white)),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.purple,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
+                    const SizedBox(height: 20),
+                    _isLoading
+                        ? const CircularProgressIndicator(
+                            color: AppColors.purple,
+                          )
+                        : ElevatedButton(
+                            onPressed: _login,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.purple,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 40,
+                                vertical: 15,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            child: const Text(
+                              'Login',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                    const SizedBox(height: 10),
                     TextButton(
                       onPressed: () {
                         Get.to(() => RegistrationScreen());
                       },
-                      child: Text(
+                      child: const Text(
                         'Don\'t have an account? Register here!',
                         style: TextStyle(color: AppColors.textColor),
                       ),
@@ -126,3 +145,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+//fornt end changes

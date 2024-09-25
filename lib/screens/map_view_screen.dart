@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import 'package:attendance_app/screens/menu_screen.dart';
 
 class MapViewScreen extends StatefulWidget {
+  const MapViewScreen({super.key});
+
   @override
   _MapViewScreenState createState() => _MapViewScreenState();
 }
@@ -41,7 +43,7 @@ class _MapViewScreenState extends State<MapViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         shadowColor: Colors.white,
         title: const Text(
           'Map View',
@@ -56,7 +58,7 @@ class _MapViewScreenState extends State<MapViewScreen> {
               onMapCreated: (GoogleMapController controller) {
                 mapController = controller;
               },
-              initialCameraPosition: CameraPosition(
+              initialCameraPosition: const CameraPosition(
                 target: LatLng(34.0522, -118.2437),
                 zoom: 10,
               ),
@@ -68,15 +70,15 @@ class _MapViewScreenState extends State<MapViewScreen> {
               onPressed: () {
                 Get.to(() => MenuScreen());
               },
-              child: const Text(
-                'List View',
-                style: TextStyle(color: AppColors.purple),
-              ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 textStyle: const TextStyle(fontSize: 18),
+              ),
+              child: const Text(
+                'List View',
+                style: TextStyle(color: AppColors.purple),
               ),
             ),
           ),

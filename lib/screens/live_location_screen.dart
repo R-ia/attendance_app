@@ -6,7 +6,7 @@ import 'package:attendance_app/assets/fake_users.dart';
 class LiveLocationScreen extends StatefulWidget {
   final int memberId;
 
-  LiveLocationScreen({required this.memberId});
+  const LiveLocationScreen({super.key, required this.memberId});
 
   @override
   _LiveLocationScreen createState() => _LiveLocationScreen();
@@ -44,7 +44,7 @@ class _LiveLocationScreen extends State<LiveLocationScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           'Live Location',
           style: TextStyle(color: Colors.white),
@@ -70,8 +70,8 @@ class _LiveLocationScreen extends State<LiveLocationScreen> {
             right: 0,
             bottom: 0,
             child: Container(
-              padding: EdgeInsets.all(20.0),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.all(20.0),
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(24.0)),
                 boxShadow: [
@@ -89,19 +89,19 @@ class _LiveLocationScreen extends State<LiveLocationScreen> {
                   // Member Name
                   Text(
                     member['name'],
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
                     ),
                   ),
-                  SizedBox(height: 8.0),
+                  const SizedBox(height: 8.0),
 
                   // Member Email
                   Row(
                     children: [
                       Icon(Icons.email, color: Colors.grey[600], size: 20),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       Text(
                         member['email'],
                         style: TextStyle(
@@ -119,7 +119,7 @@ class _LiveLocationScreen extends State<LiveLocationScreen> {
                   ),
 
                   // Current Location Label
-                  Text(
+                  const Text(
                     'Current Location:',
                     style: TextStyle(
                       fontSize: 16,
@@ -127,18 +127,18 @@ class _LiveLocationScreen extends State<LiveLocationScreen> {
                       color: Colors.black54,
                     ),
                   ),
-                  SizedBox(height: 4.0),
+                  const SizedBox(height: 4.0),
 
                   // Current Location Name
                   Row(
                     children: [
-                      Icon(Icons.location_on,
+                      const Icon(Icons.location_on,
                           color: AppColors.purple, size: 22),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       Expanded(
                         child: Text(
                           currentLocationName,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                             color: Colors.black87,
                           ),
@@ -149,7 +149,7 @@ class _LiveLocationScreen extends State<LiveLocationScreen> {
                     ],
                   ),
 
-                  SizedBox(height: 12.0),
+                  const SizedBox(height: 12.0),
                 ],
               ),
             ),

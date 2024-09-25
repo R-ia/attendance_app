@@ -12,7 +12,7 @@ class RouteDetails {
 }
 
 Future<RouteDetails> fetchRoute(LatLng start, LatLng end) async {
-  final String apiKey = 'AIzaSyA7VRrJc0nxBoH2WhemLcwhEqQnUCPfcTA';
+  const String apiKey = 'AIzaSyA7VRrJc0nxBoH2WhemLcwhEqQnUCPfcTA';
   final String url =
       'https://maps.googleapis.com/maps/api/directions/json?origin=${start.latitude},${start.longitude}&destination=${end.latitude},${end.longitude}&key=$apiKey';
 
