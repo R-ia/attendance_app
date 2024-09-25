@@ -74,7 +74,7 @@ class MenuScreen extends StatelessWidget {
                   style: TextStyle(color: AppColors.textColor)),
               onTap: () async {
                 await _authService.signOut();
-                Get.offAll(LoginScreen());
+                Get.offAll(const LoginScreen());
               },
             ),
           ],
@@ -108,8 +108,8 @@ class MenuScreen extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 // Navigate to the map view
-                Get.to(
-                    () => MapViewScreen()); // Replace with your MapViewScreen
+                Get.to(() =>
+                    const MapViewScreen()); // Replace with your MapViewScreen
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,

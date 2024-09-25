@@ -138,7 +138,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      child: Text('Register',
+                      child: const Text('Register',
                           style: TextStyle(color: Colors.white)),
                     ),
                     TextButton(
