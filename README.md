@@ -22,7 +22,6 @@
   - **Stop Location**
   - **Total Kilometers Traveled**
   - **Total Duration**
-- A route map shows the entire path, with red dots marking stops longer than 10 minutes.
 
 ### 4. Firebase Integration
 
@@ -34,7 +33,7 @@
 - **Firebase Core**: For initializing Firebase services.
 - **Firebase Auth**: For handling authentication functionalities.
 - **GetX**: For efficient state management and navigation.
-- **Google Maps Flutter**: For embedding Google Maps into the app and displaying member locations and routes.
+- **Google Maps Flutter**: This is for embedding Google Maps into the app and displaying member locations and routes.
 
 ## How to Run
 
